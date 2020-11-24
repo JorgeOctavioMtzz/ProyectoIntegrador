@@ -3,7 +3,8 @@
 class CtaBanc{
 
     private:
-    int noTarjeta, CVV, saldo;
+    int noTarjeta, CVV;
+    double saldo;
     Fecha fechaExp;
 
     public:
@@ -11,22 +12,21 @@ class CtaBanc{
     CtaBanc(int nNoTarjeta, int nCVV, int nSaldo, Fecha nFechaExp);
     void setNoTarjeta(int nNoTarjeta);
     void setCVV(int nCVV);
-    void setSaldo(int nSaldo);
+    void setSaldo(double nSaldo);
     void setFechaExp(Fecha nFechaExp);
 
     int getNoTarjeta();
     int getCVV();
-    int getSaldo();
+    double getSaldo();
     Fecha getFechaExp();
 
 };
 
 CtaBanc::CtaBanc(){
     Fecha fechaTemp;
-
-    noTarjeta = 0;
-    CVV = 0;
-    saldo = 0;
+    noTarjeta = 1234123412341234;
+    CVV = 123;
+    saldo = 0.00;
     fechaExp = fechaTemp;
 }
 
@@ -45,7 +45,7 @@ void CtaBanc::setCVV(int nCVV){
     CVV = nCVV;
 }
 
-void CtaBanc::setSaldo(int nSaldo){
+void CtaBanc::setSaldo(double nSaldo){
     saldo = nSaldo;
 }
 
@@ -61,7 +61,7 @@ int CtaBanc::getCVV(){
     return CVV;
 }
 
-int CtaBanc::getSaldo(){
+double CtaBanc::getSaldo(){
     return saldo;
 }
 

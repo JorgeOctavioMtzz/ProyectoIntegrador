@@ -1,43 +1,54 @@
-#include "Fecha.h"
-
+#ifndef CtaBanc_h
+#define CtaBanc_h
 class CtaBanc{
 
     private:
-    int noTarjeta, CVV;
+    string noTarjeta;
+    int CVV, mes, año;
     double saldo;
-    Fecha fechaExp;
 
     public:
     CtaBanc();
-    CtaBanc(int nNoTarjeta, int nCVV, int nSaldo, Fecha nFechaExp);
-    void setNoTarjeta(int nNoTarjeta);
+    CtaBanc(string nNoTarjeta, int nCVV, double nSaldo, int nAño, int nMes);
+    CtaBanc(string nNoTarjeta, int nCVV, int nAño, int nMes);
+    void setNoTarjeta(string nNoTarjeta);
     void setCVV(int nCVV);
     void setSaldo(double nSaldo);
-    void setFechaExp(Fecha nFechaExp);
+    void setMes(int nMes);
+    void setAño(int nAño);
 
-    int getNoTarjeta();
+    string getNoTarjeta();
     int getCVV();
     double getSaldo();
-    Fecha getFechaExp();
-
+    int getMes();
+    int getAño();
 };
 
 CtaBanc::CtaBanc(){
-    Fecha fechaTemp;
-    noTarjeta = 1234123412341234;
+    noTarjeta = "1234123412341234";
     CVV = 123;
     saldo = 0.00;
-    fechaExp = fechaTemp;
+    año = 99;
+    mes = 1;
 }
 
-CtaBanc::CtaBanc(int nNoTarjeta, int nCVV, int nSaldo, Fecha nFechaExp){
+CtaBanc::CtaBanc(string nNoTarjeta, int nCVV, double nSaldo, int nMes, int nAño){
     noTarjeta = nNoTarjeta;
     CVV = nCVV;
     saldo = nSaldo;
-    fechaExp = nFechaExp;
+    año = nAño;
+    mes = nMes;
 }
 
-void CtaBanc::setNoTarjeta(int nNoTarjeta){
+CtaBanc::CtaBanc(string nNoTarjeta, int nCVV, int nMes, int nAño){
+    noTarjeta = nNoTarjeta;
+    CVV = nCVV;
+    saldo = 0.0;
+    año = nAño;
+    mes = nMes;
+}
+
+void CtaBanc::setNoTarjeta(string nNoTarjeta){
     noTarjeta = nNoTarjeta;
 }
 
@@ -49,11 +60,15 @@ void CtaBanc::setSaldo(double nSaldo){
     saldo = nSaldo;
 }
 
-void CtaBanc::setFechaExp(Fecha nFechaExp){
-    fechaExp = nFechaExp;
+void CtaBanc::setMes(int nMes){
+    mes = nMes;
 }
 
-int CtaBanc::getNoTarjeta(){
+void CtaBanc::setMes(int nAño){
+    año = nAño;
+}
+
+string CtaBanc::getNoTarjeta(){
     return noTarjeta;
 }
 
@@ -65,6 +80,11 @@ double CtaBanc::getSaldo(){
     return saldo;
 }
 
-Fecha CtaBanc::getFechaExp(){
-    fechaExp.print();
+int CtaBanc::getMes(){
+    return mes;
 }
+
+int CtaBanc::getAño(){
+    return año;
+}
+#endif

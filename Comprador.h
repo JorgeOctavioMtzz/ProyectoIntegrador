@@ -1,57 +1,104 @@
+#ifndef Comprador_h
+#define Comprador_h
 #include "Direccion.h"
-#include "Fecha.h"
 #include "CtaBanc.h"
 #include "Producto.h"
+#include<fstream>
 
 class Comprador{
 
     private:
     string nombre;
-    Fecha fechaRecibido;
-    Direccion direccion;
-    Producto nProducto;
+    Direccion direction;
     CtaBanc datosBancarios;
 
     public:
     Comprador();
-    void seleccionarProducto(Producto nProducto);
-    CtaBanc ingresarDatosBancarios();
-    Direccion ingresarDireccion();
-    
+    CtaBanc leerDatosBanc();
+    CtaBanc PedirDatosBanc();
+    string getName();
+    Direccion getDireccion();
+    CtaBanc getDtaBanc();
+    void setDireccion();
+    void setNombre(string Username);
+    void DatosValidados();
+    void Error();
 };
 
 Comprador::Comprador(){
     nombre = "-";
-    Fecha fechaRecibido;
     CtaBanc datosBancarios;
-    Direccion direccion;
+    Direccion direction;
 }
 
-void Comprador::seleccionarProducto(Producto nProducto){
-    Producto nProducto;
 
+CtaBanc Comprador::leerDatosBanc()
+{
+
+    string nNoTarjeta;
+    int nCVV, año, mes;
+    double nSaldo;
+    CtaBanc BancBase;
+    ifstream f; f.open("Ctaba.txt");
+    while (f >> nNoTarjeta >> nCVV >> nSaldo >> mes >> año)
+    {
+        CtaBanc BancBase(string nNoTarjeta, int nCVV, double nSaldo, int nMes, int nAño);
+    }
+    return BancBase;
 }
 
-CtaBanc Comprador::ingresarDatosBancarios(){
+string Comprador :: getName()
+{
+    return nombre;
+}
 
-    int nNoTarjeta, nCVV, nSaldo, año, mes, dia;
+Direccion Comprador :: getDireccion()
+{
+    return direction;
+}
     
-
-    cout << "Ingresa numero de tarjeta ";
-    cin >> nNoTarjeta;
-    cout << "Ingresa CVV: ";
-    cin >> nCVV;
-    cout << "Ingresa saldo: ";
-    cin >> nSaldo;
-    cout << "Ingresa fecha de expiracion (año, mes, dia) con numero";
-    cin >> año >> mes >> dia;
-    Fecha nFechaExp(int año, int mes, int dia);
-    CtaBanc datosBancarios(int nNoTarjeta, int nCVV, int nSaldo, Fecha nFechaExp);
-
-    return datosBancarios(nNoTarjeta, nCVV, nSaldo, nFechaExp(año, mes, dia));
+CtaBanc Comprador :: getDtaBanc()
+{
+    return datosBancarios;
 }
 
-Direccion Comprador::ingresarDireccion(){
-
-    return direccion
+CtaBanc Comprador::PedirDatosBanc()
+{
+    string nUNoTarjeta;
+    int nUCVV, Uaño, Umes;
+    double nSaldo;
+    CtaBanc CtaUser;
+    cout << "Ingrese los 16 dígitos de su tarjeta de credito: "; cin >> nUNoTarjeta; cout << endl;
+    cout << "Ingrese los 3 numeros de atras de su tarjeta de credito: "; cin >> nUCVV; cout << endl;
+    cout << "Mes de expiración: "; cin >> Umes; cout << endl;
+    cout << "Año de expiración: "; cin >> Uaño; cout << endl;
+    CtaUser.setNoTarjeta(nUNoTarjeta);
+    CtaUser.setCVV(nUCVV);
+    CtaUser.setMes(Umes);
+    CtaUser.setAño(Uaño);
+    datosBancarios = CtaUser;
+    
 }
+
+void Comprador :: setDireccion(){
+    string pais, estado, ciudad, colonia, calle;
+    int numCasa, codPostal;
+
+    cout << "País: "; cin >> pais; cout << endl;
+    cout << "Estado: "; cin >> estado; cout << endl;
+    cout << "Ciudad: "; cin >> ciudad; cout << endl;
+    cout << "Colonia: "; cin >> colonia; cout << endl;
+    cout << "Calle: "; cin >> calle; cout << endl;
+    cout << "Número de Casa: "; cin >> numCasa; cout << endl;
+    cout << "Codigo Postal: "; cin >> codPostal; cout << endl;
+    direction.setPais(pais);
+    direction.setEstado(estado);
+    direction.setCiudad(ciudad);
+    direction.setColonia(colonia);
+    direction.setnumCasa(numCasa);
+    direction.setcodPostal(codPostal);
+}
+
+//Aqui va la validos
+
+#endif

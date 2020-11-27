@@ -55,8 +55,8 @@ int main()
             cout << "Ingrese los 16 dígitos de su tarjeta de credito: "; cin >> noTarjeta; cout << endl;
             cout << "Ingrese su CVV: "; cin >> CVV; cout << endl;
             cout << "Ingrese su Saldo: "; cin >> saldo; cout << endl;
-            cout << "Ingrese el mes de expiración: "; cin >> mes; << endl;
-            cout << "Ingrese el año de expiración: "; cin >> año; << endl;
+            cout << "Ingrese el mes de expiración: "; cin >> mes; cout << endl;
+            cout << "Ingrese el año de expiración: "; cin >> año; cout << endl;
             CtaBanc CtaIngresada(noTarjeta, CVV, saldo, mes, año);
             if ((CtaIngresada.getNoTarjeta() == CtaDatab.getNoTarjeta()) && (CtaIngresada.getCVV() == CtaDatab.getCVV()) && (CtaIngresada.getMes() == CtaDatab.getMes()) && (CtaIngresada.getAño() == CtaDatab.getAño()))
             {

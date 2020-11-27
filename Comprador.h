@@ -1,8 +1,7 @@
 #ifndef Comprador_h
 #define Comprador_h
 #include "Direccion.h"
-#include "CtaBanc.h"
-#include "Producto.h"
+#include "CtaBanc.h"   // eliminar
 #include<fstream>
 
 class Comprador{
@@ -10,12 +9,13 @@ class Comprador{
     private:
     string nombre;
     Direccion direction;
-    CtaBanc datosBancarios;
+    CtaBanc datosBancarios; // convertir clase cta bancaria a atributo ligado al txt
 
     public:
     Comprador();
+    Comprador(string Nnombre, Direccion nDireccion, CtaBanc NCtaBanc);
     CtaBanc leerDatosBanc();
-    CtaBanc PedirDatosBanc();
+    void PedirDatosBanc();
     string getName();
     Direccion getDireccion();
     CtaBanc getDtaBanc();
@@ -27,10 +27,18 @@ class Comprador{
 
 Comprador::Comprador(){
     nombre = "-";
-    CtaBanc datosBancarios;
-    Direccion direction;
+    CtaBanc datosBancariosDFT;
+    datosBancarios = datosBancariosDFT;
+    Direccion directionDft;
+    direction = directionDft;
 }
 
+Comprador :: Comprador(string Nnombre, Direccion nDireccion, CtaBanc NCtaBanc)
+{
+    nombre = Nnombre;
+    direction = nDireccion;
+    datosBancarios = NCtaBanc;
+}
 
 CtaBanc Comprador::leerDatosBanc()
 {
@@ -62,7 +70,7 @@ CtaBanc Comprador :: getDtaBanc()
     return datosBancarios;
 }
 
-CtaBanc Comprador::PedirDatosBanc()
+void Comprador::PedirDatosBanc()
 {
     string nUNoTarjeta;
     int nUCVV, Uaño, Umes;
@@ -77,7 +85,6 @@ CtaBanc Comprador::PedirDatosBanc()
     CtaUser.setMes(Umes);
     CtaUser.setAño(Uaño);
     datosBancarios = CtaUser;
-    
 }
 
 void Comprador :: setDireccion(){

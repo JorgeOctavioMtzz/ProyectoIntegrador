@@ -1,7 +1,8 @@
 #ifndef CtaBanc_h
 #define CtaBanc_h
-class CtaBanc{
+using namespace std;
 
+class CtaBanc{
     private:
     string noTarjeta;
     int CVV, mes, año;
@@ -64,7 +65,7 @@ void CtaBanc::setMes(int nMes){
     mes = nMes;
 }
 
-void CtaBanc::setMes(int nAño){
+void CtaBanc::setAño(int nAño){
     año = nAño;
 }
 

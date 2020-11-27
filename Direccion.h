@@ -21,7 +21,6 @@ class Direccion
         string getCalle();
         int getnumCasa();
         int getCP();
-        void printDireccion();
 
     private:
         string pais, estado, ciudad, colonia, calle;
@@ -86,17 +85,27 @@ void Direccion :: setcodPostal(int NCP)
     codPostal = NCP;
 }
 
-string Direccion :: getPais() { return pais; }
-string Direccion :: getEstado() { return estado; }
-string Direccion :: getCiudad() { return ciudad; }
-string Direccion :: getColonia() { return colonia; }
-string Direccion :: getCiudad() { return ciudad; }
-int Direccion :: getnumCasa() { return numCasa; }
-int Direccion :: getCP() { return codPostal;}
-
-void Direccion :: printDireccion()
-{
-    cout << getCiudad() << ", " << getEstado() << ", " << getPais() << endl;
-    cout << "Colonia: " << getColonia() << ", " << "Calle: " << getCalle() << endl;
-    cout << "#" << getnumCasa() << ", " << "CP: " << getCP() << endl;
+string Direccion :: getPais() 
+{ 
+    return pais; 
+}
+string Direccion :: getEstado() 
+{ 
+    return estado; 
+}
+string Direccion :: getCiudad() 
+{ 
+    return ciudad; 
+}
+string Direccion :: getColonia() 
+{ 
+    return colonia; 
+}
+int Direccion :: getnumCasa() 
+{ 
+    return numCasa; 
+}
+int Direccion :: getCP()
+{ 
+    return codPostal;
 }

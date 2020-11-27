@@ -4,27 +4,31 @@ using namespace std;
 
 class CtaBanc{
     private:
+    // Declaracion de los atributos de la clase
     string noTarjeta;
     int CVV, mes, año;
     double saldo;
 
     public:
-    CtaBanc();
-    CtaBanc(string nNoTarjeta, int nCVV, double nSaldo, int nAño, int nMes);
-    CtaBanc(string nNoTarjeta, int nCVV, int nAño, int nMes);
+    CtaBanc(); // Constructor default 
+    CtaBanc(string nNoTarjeta, int nCVV, double nSaldo, int nAño, int nMes); // Constructor con parametros
+    CtaBanc(string nNoTarjeta, int nCVV, int nAño, int nMes); 
+
+    // Asignar valores a los atributos
     void setNoTarjeta(string nNoTarjeta);
     void setCVV(int nCVV);
     void setSaldo(double nSaldo);
     void setMes(int nMes);
     void setAño(int nAño);
 
+    // Regresar los valores de los atributos
     string getNoTarjeta();
     int getCVV();
     double getSaldo();
     int getMes();
     int getAño();
 };
-
+// Implementacion de los métodos
 CtaBanc::CtaBanc(){
     noTarjeta = "1234123412341234";
     CVV = 123;

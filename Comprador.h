@@ -1,30 +1,37 @@
 #ifndef Comprador_h
 #define Comprador_h
 #include "Direccion.h"
-#include "CtaBanc.h"   // eliminar
+#include "CtaBanc.h"   
 #include<fstream>
 
 class Comprador{
 
     private:
+    // Declaracion de los atributos de la clase
     string nombre;
     Direccion direction;
     CtaBanc datosBancarios; // convertir clase cta bancaria a atributo ligado al txt
 
     public:
-    Comprador();
-    Comprador(string Nnombre, Direccion nDireccion, CtaBanc NCtaBanc);
-    CtaBanc leerDatosBanc();
+    Comprador(); // Constructor default 
+    Comprador(string Nnombre, Direccion nDireccion, CtaBanc NCtaBanc); // Constructor con parametros
+
+    CtaBanc leerDatosBanc(); // eliminar
     void PedirDatosBanc();
+
+    // Regresar los valores de los atributos
     string getName();
     Direccion getDireccion();
     CtaBanc getDtaBanc();
+
+    // Asignar valores a los atributos
     void setDireccion();
     void setNombre(string Username);
-    void DatosValidados();
-    void Error();
-};
 
+    void DatosValidados(); //eliminar
+    void Error(); //eliminar
+};
+// Implementacion de los métodos
 Comprador::Comprador(){
     nombre = "-";
     CtaBanc datosBancariosDFT;

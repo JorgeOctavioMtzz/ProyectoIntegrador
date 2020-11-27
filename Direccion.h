@@ -5,8 +5,10 @@ using namespace std;
 class Direccion
 {
     public:
-        Direccion();
-        Direccion(string NPa, string NEs, string NCiu, string NCo, string NCa, int NNC, int NCP);
+        Direccion(); // Constructor default 
+        Direccion(string NPa, string NEs, string NCiu, string NCo, string NCa, int NNC, int NCP); // Constructor con parametros
+
+        // Asignar valores a los atributos
         void setPais(string NPa);
         void setEstado(string NEs);
         void setCiudad(string NCiu);
@@ -14,6 +16,8 @@ class Direccion
         void setCalle(string NCa);
         void setnumCasa(int NNC);
         void setcodPostal(int NCP);
+
+        // Regresar los valores de los atributos
         string getPais();
         string getEstado();
         string getCiudad();
@@ -23,11 +27,12 @@ class Direccion
         int getCP();
 
     private:
+    // Declaracion de los atributos de la clase
         string pais, estado, ciudad, colonia, calle;
         int numCasa, codPostal;
 
 };
-
+// Implementacion de los métodos
 Direccion :: Direccion()
 {
     pais = "México";

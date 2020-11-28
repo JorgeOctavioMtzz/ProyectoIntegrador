@@ -40,6 +40,7 @@ class Vendedor{
     void setPrecio2(double nPrecio2);
     void setPrecio3(double nPrecio3);
     void PrintProd();
+    void print();
 };
 // Implementacion de los métodos
 Vendedor::Vendedor(){
@@ -157,6 +158,12 @@ void Vendedor :: setPrecio2(double nPrecio2)
 void Vendedor :: setPrecio3(double nPrecio3)
 {
     Precio3 = nPrecio3;
+}
+
+void Vendedor :: print()
+{
+    cout << nombre << " No. Tarjeta " << getDtaBanc().getNoTarjeta() << endl;
+    cout << "Saldo " <<  getDtaBanc().getSaldo()
 }
 
 void Vendedor :: PrintProd()

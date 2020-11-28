@@ -40,7 +40,7 @@ void IDatosVendedor(Vendedor ArrVendedor[], int &numVendedores)
     string pais, estado, ciudad, colonia, calle, noTarjeta, Prod1, Prod2, Prod3;
     double Prec1, Prec2, Prec3;
     int saldo, numCasa, codPostal, numVendedores;
-    cout << "¿Cuantos compradores quieres registrar? (Max. 20) "; cin >> numVendedores;
+    cout << "¿Cuantos Vendedores quieres registrar? (Max. 20) "; cin >> numVendedores;
     for (int cont=0; cont < numVendedores ; cont++)
     {
         cout << "Direccion desde la que se enviará su producto: " << endl;
@@ -76,10 +76,92 @@ void IDatosVendedor(Vendedor ArrVendedor[], int &numVendedores)
     }
 }   
 
+Comprador Login(Comprador arrComp[], int noComp)
+{   
+    string User;
+    cout << "¿Quien Esta Comprando? "; cin >> User;
+    for (int cont=0; cont < noComp; cont++)
+    {
+        if (arrComp[cont].getName() == User)
+        {
+            return arrComp[cont];
+        }
+        else
+        {
+            cout << "Error 404: Tu nombre no coincide con nuestros Datos, favor de Registrarse...";
+            break;
+        }
+    }
+}
+
+Vendedor SeleccionV(Vendedor arrVend[], int noVend)
+{
+    string VendedorS;
+    cout << "Selecciona el Vendor "; cin >> VendedorS;
+    for (int cont=0; cont < noVend; cont++)
+    {
+        if (arrVend[cont].getName() == VendedorS)
+        {
+            return arrVend[cont];
+        }
+        else
+        {
+            cout << "Error 404: El vendedor seleccionado no existe";
+            break;
+        }
+    }
+}
+
+void SeleccionP(double &Valor, string &NProducto, int noVend, Vendedor arrVend[])
+{
+    string ProductoS;
+    cout << "Selecciona tu Producto "; cin >> ProductoS;
+    for (int cont=0; cont < noVend; cont++)
+    {
+        if (arrVend[cont].getProducto1() == ProductoS)
+        {
+            NProducto = arrVend[cont].getProducto1();
+            Valor = arrVend[cont].getPrecio1();
+        }
+        else if (arrVend[cont].getProducto2() == ProductoS)
+        {
+            NProducto = arrVend[cont].getProducto2();
+            Valor = arrVend[cont].getPrecio2();
+        }
+        else if (arrVend[cont].getProducto3() == ProductoS)
+        {
+            NProducto = arrVend[cont].getProducto3();
+            Valor = arrVend[cont].getPrecio3();
+        }
+        
+    }
+}
+
+double CalculoPrecio(Vendedor V, Comprador C, double VaP)
+{
+    double PrecioF;
+    if (V.getDireccion().getPais() == C.getDireccion().getPais())
+    {
+        PrecioF = (VaP*0.16) + VaP;
+        cout << "Envio Nacional ";
+    }
+    else
+    {
+        PrecioF = (VaP*0.16) + VaP + 100;
+        cout << "Envio Internacional ";
+    }
+    return PrecioF;
+}
+
 int main()
 {
     Comprador arrCompradores[20];
-    int nComp;
+    Vendedor arrVendedores[20];
+    Comprador CompradorA;
+    Vendedor VendedorA;
+    double ValoraPagar, ValorTotal;
+    string ProductoaPagar, Sel;
+    int nComp, nVend;
     char opcion;
     do{
         cout << endl;
@@ -104,13 +186,40 @@ int main()
             }
             break;
         case 'c':
-            
+            for (int cont=0; cont < nVend; cont++)
+            {
+                arrVendedores[cont].print(); cout << "\n";
+                arrVendedores[cont].getDireccion().print(); cout << "\n";
+                cout << "\n";
+            }
             break;
         case 'd':
-            consultaVendedoresPorDepartamento(listaVend, cantVend, listaDeptos, cantDeptos);
+            for (int cont=0; cont < nVend; cont++)
+            {
+                arrVendedores[cont].PrintProd(); cout << "\n";
+            }
             break;
         case 'e':
-            consultaVendedoresPorDepartamento(listaVend, cantVend, listaDeptos, cantDeptos);
+            CompradorA = Login(arrCompradores, nComp);
+            for (int cont=0; cont < nVend; cont++)
+            {
+                cout << arrVendedores[cont].getName();
+            }
+            VendedorA = SeleccionV(arrVendedores, nVend);
+
+            for (int cont=0; cont < (nVend); cont++)
+            {
+                cout << "Vendedor " << cont;
+                arrVendedores[cont].PrintProd();
+                cout << "\n";
+            }
+            SeleccionP(ValoraPagar, ProductoaPagar, nVend, arrVendedores);
+            ValorTotal = CalculoPrecio(VendedorA, CompradorA, ValoraPagar);
+            cout << "¿Quieres Proseguir con la compra?" << endl;
+            cout << "Tu Compra:" << ProductoaPagar << "          $" << ValoraPagar;
+            cout << "Si/No"; cin >> Sel;
+            if (Sel == "Si")
+            
             break;
         }
 

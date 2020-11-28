@@ -2,11 +2,11 @@
 #include <string>
 using namespace std;
 
-class Direccion
+class Direcciontwo
 {
     public:
-        Direccion(); // Constructor default 
-        Direccion(string NPa, string NEs, string NCiu, string NCo, string NCa, int NNC, int NCP); // Constructor con parametros
+        Direcciontwo(); // Constructor default 
+        Direcciontwo(string NPa, string NEs, string NCiu, string NCo, string NCa, int NNC, int NCP); // Constructor con parametros
 
         // Asignar valores a los atributos
         void setPais(string NPa);
@@ -34,7 +34,7 @@ class Direccion
 
 };
 // Implementacion de los métodos
-Direccion :: Direccion()
+Direcciontwo :: Direcciontwo()
 {
     pais = "México";
     estado = "Coahuila";
@@ -45,7 +45,7 @@ Direccion :: Direccion()
     codPostal = 25090;
 }
 
-Direccion :: Direccion(string NPa, string NEs, string NCiu, string NCo, string NCa, int NNC, int NCP)
+Direcciontwo :: Direcciontwo(string NPa, string NEs, string NCiu, string NCo, string NCa, int NNC, int NCP)
 {
     pais = NPa;
     estado = NEs;
@@ -56,67 +56,67 @@ Direccion :: Direccion(string NPa, string NEs, string NCiu, string NCo, string N
     codPostal = NCP;
 }
 
-void Direccion :: setPais(string NPa) 
+void Direcciontwo :: setPais(string NPa) 
 { 
     pais = NPa; 
 }
 
-void Direccion :: setEstado(string NEs) 
+void Direcciontwo :: setEstado(string NEs) 
 { 
     estado = NEs;
 }
 
-void Direccion :: setCiudad(string NCiu) 
+void Direcciontwo :: setCiudad(string NCiu) 
 { 
     ciudad = NCiu;
 }
 
-void Direccion :: setColonia(string NCo) 
+void Direcciontwo :: setColonia(string NCo) 
 { 
     colonia = NCo;
 }
 
-void Direccion :: setCalle(string NCa) 
+void Direcciontwo :: setCalle(string NCa) 
 { 
     calle = NCa;
 }
 
-void Direccion :: setnumCasa(int NNC) 
+void Direcciontwo :: setnumCasa(int NNC) 
 { 
     numCasa = NNC;
 }
 
-void Direccion :: setcodPostal(int NCP) 
+void Direcciontwo :: setcodPostal(int NCP) 
 { 
     codPostal = NCP;
 }
 
-string Direccion :: getPais() 
+string Direcciontwo :: getPais() 
 { 
     return pais; 
 }
-string Direccion :: getEstado() 
+string Direcciontwo :: getEstado() 
 { 
     return estado; 
 }
-string Direccion :: getCiudad() 
+string Direcciontwo :: getCiudad() 
 { 
     return ciudad; 
 }
-string Direccion :: getColonia() 
+string Direcciontwo :: getColonia() 
 { 
     return colonia; 
 }
-int Direccion :: getnumCasa() 
+int Direcciontwo :: getnumCasa() 
 { 
     return numCasa; 
 }
-int Direccion :: getCP()
+int Direcciontwo :: getCP()
 { 
     return codPostal;
 }
 
-void Direccion :: print()
+void Direcciontwo :: print()
 {
     cout << ciudad << ", " << estado << ", " << pais << endl;
     cout << calle << ", #" << numCasa << ", " << colonia << endl;

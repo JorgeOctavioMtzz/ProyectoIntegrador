@@ -1,5 +1,5 @@
 #include<iostream>
-#include"/Users/octavio/Desktop/CPP/ProyectoIntegrador/ProyectoIntegrador/CtaBanc.h"
+#include"CtaBanc.h"
 #include<fstream>
 using namespace std;
 
